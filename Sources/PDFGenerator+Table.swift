@@ -34,9 +34,9 @@ extension PDFGenerator {
             // Calcuate X position and size
             for (colIdx, column) in row.enumerated() {
                 let cellStyle = getCellStyle(tableHeight: data.count + styleIndexOffset, style: style, row: styleIndexOffset + rowIdx, column: colIdx, newPageBreak: newPageBreak)
-                let attributes: [String: AnyObject] = [
-                    NSForegroundColorAttributeName: cellStyle.textColor,
-                    NSFontAttributeName: cellStyle.font
+                let attributes: [NSAttributedStringKey: AnyObject] = [
+                    NSAttributedStringKey.foregroundColor: cellStyle.textColor,
+                    NSAttributedStringKey.font: cellStyle.font
                 ]
                 
                 let text = NSAttributedString(string: column, attributes: attributes)
@@ -122,9 +122,9 @@ extension PDFGenerator {
             for (colIdx, text) in row.enumerated() {
                 let cellStyle = getCellStyle(tableHeight: data.count + styleIndexOffset, style: style, row: styleIndexOffset + rowIdx, column: colIdx, newPageBreak: newPageBreak)
                 
-                let attributes: [String: AnyObject] = [
-                    NSForegroundColorAttributeName: cellStyle.textColor,
-                    NSFontAttributeName: cellStyle.font
+                let attributes: [NSAttributedStringKey: AnyObject] = [
+                    NSAttributedStringKey.foregroundColor: cellStyle.textColor,
+                    NSAttributedStringKey.font: cellStyle.font
                 ]
                 
                 let textFrame = framesInThisPage[rowIdx][colIdx]

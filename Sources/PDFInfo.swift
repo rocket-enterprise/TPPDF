@@ -17,4 +17,7 @@ public struct PDFInfo {
     public var allowsPrinting = true
     public var allowsCopying = true
     
+    public init() {
+        // This initializer intentionally left empty
+    }
 }

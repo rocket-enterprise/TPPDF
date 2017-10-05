@@ -61,7 +61,7 @@ extension PDFGenerator {
         } while(!done)
     }
     
-    func generateDefaultTextAttributes(_ container: Container, spacing: CGFloat) -> [String: NSObject] {
+    func generateDefaultTextAttributes(_ container: Container, spacing: CGFloat) -> [NSAttributedStringKey: NSObject] {
         let paragraphStyle = NSMutableParagraphStyle()
         switch container {
         case .headerLeft, .contentLeft, .footerLeft:
@@ -77,8 +77,8 @@ extension PDFGenerator {
         paragraphStyle.lineSpacing = spacing
         
         return [
-            NSFontAttributeName: fonts[container]!,
-            NSParagraphStyleAttributeName: paragraphStyle
+            NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): fonts[container]!,
+            NSAttributedStringKey(rawValue: NSAttributedStringKey.paragraphStyle.rawValue): paragraphStyle
         ]
     }
 }

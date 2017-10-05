@@ -9,7 +9,7 @@
 public enum Container {
     case none
     case headerLeft, headerCenter, headerRight
-    case contentLeft, contentCenter, contentRight
+    case contentLeft, contentCenter, contentRight, contentFull
     case footerLeft, footerCenter, footerRight
     
     var opposite: Container {
@@ -53,7 +53,7 @@ public enum Container {
         switch self {
         case .headerLeft, .headerCenter, .headerRight:
             return .headerLeft
-        case .contentLeft, .contentCenter, .contentRight:
+        case .contentLeft, .contentCenter, .contentRight, .contentFull:
             return .contentLeft
         case .footerLeft, .footerCenter, .footerRight:
             return .footerLeft
@@ -65,7 +65,7 @@ public enum Container {
     static var all: [Container] {
         return [
             .headerLeft, .headerCenter, .headerRight,
-            .contentLeft, .contentCenter, .contentRight,
+            .contentLeft, .contentCenter, .contentRight, .contentFull,
             .footerLeft, .footerCenter, .footerRight
         ]
     }
@@ -102,3 +102,4 @@ public enum TableCellAlignment {
 public enum ImageSizeFit {
     case width, height, widthHeight
 }
+
