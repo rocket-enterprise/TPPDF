@@ -85,7 +85,14 @@ extension PDFGenerator {
     }
     
     open func generatePDFfile(_ fileName: String, progress: ((CGFloat) -> ())? = nil) -> URL {
+        
+        /*
         let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName).appendingPathExtension("pdf")
+        */
+        
+        let manager = FileManager.default
+        let URLs = manager.urls(for: .documentDirectory, in: .userDomainMask)
+        URLs[0].appendingPathComponent(fileName)
         
         UIGraphicsBeginPDFContextToFile(url.path, pageBounds, generateDocumentInfo())
         generatePDFContext(progress: progress)
