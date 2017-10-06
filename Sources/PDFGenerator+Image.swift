@@ -8,8 +8,9 @@
 
 extension PDFGenerator {
     
-    func drawImage(_ container: Container, image: UIImage, size: CGSize, caption: NSAttributedString, sizeFit: ImageSizeFit) {
+    func drawImage(_ container: Container, image: UIImage, size: CGSize, caption: NSAttributedString, sizeFit: ImageSizeFit, fullscreen: Bool = false) {
         var (imageSize, captionSize) = calculateImageCaptionSize(container, image: image, size: size, caption: caption, sizeFit: sizeFit)
+        
         
         let y: CGFloat = {
             switch container.normalize {
@@ -37,6 +38,9 @@ extension PDFGenerator {
                 return pageMargin + indentation[container.normalize]!
             case .headerCenter, .contentCenter, .footerCenter:
                 return pageBounds.midX - imageSize.width / 2
+            case .contentFull:
+                imageSize.width = 595
+                return 0
             case .headerRight, .contentRight, .footerRight:
                 return pageBounds.width - pageMargin - imageSize.width
             default:
@@ -45,6 +49,7 @@ extension PDFGenerator {
         }()
         
         let frame = CGRect(x: x, y: y, width: imageSize.width, height: imageSize.height)
+        
         drawImage(container, image: image, frame: frame, caption: caption)
     }
     
@@ -132,3 +137,4 @@ extension PDFGenerator {
         }
     }
 }
+
