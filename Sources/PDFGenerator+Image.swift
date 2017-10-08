@@ -39,7 +39,8 @@ extension PDFGenerator {
             case .headerCenter, .contentCenter, .footerCenter:
                 return pageBounds.midX - imageSize.width / 2
             case .contentFull:
-                imageSize.width = 595
+                imageSize.width = size.width
+                imageSize.height = size.height
                 return 0
             case .headerRight, .contentRight, .footerRight:
                 return pageBounds.width - pageMargin - imageSize.width
